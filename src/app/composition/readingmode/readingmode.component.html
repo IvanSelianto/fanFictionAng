@@ -1,0 +1,47 @@
+<div class="container " *ngIf="chapter">
+
+
+  <div class="image">
+    <img src="{{chapter.imgUrl}}" height="200" width="auto">
+    <div class="right" *ngIf="hiddenChapterOptions">
+
+      <button mat-fab color="primary" (click)="edit()">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-fab color="primary" (click)="delete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+
+    </div>
+  </div>
+
+  <h1 style="word-wrap: break-word;">{{chapter.name}}</h1>
+  <div class="text" [innerHTML]="chapter.text | sanitizeHtml">
+
+  </div>
+
+  <div style="text-align: center">
+    <mat-divider style="margin-bottom: 8px; margin-top: 8px;"></mat-divider>
+
+    <button mat-mini-fab color="primary"
+            (click)="goOnPage( this.compositionService.chapters.indexOf(chapter), -1)">
+      <mat-icon>west</mat-icon>
+    </button>
+    <span class="chapterNumbers" id="{{chapter.chapterNumber}}" (click)="clickPage(chapter)"
+          *ngFor="let i= index; let chapter of this.compositionService.chapters">
+      {{chapter.chapterNumber}}</span>
+
+    <button mat-mini-fab color="primary"
+            (click)="goOnPage( this.compositionService.chapters.indexOf(chapter), 1)">
+      <mat-icon>east</mat-icon>
+    </button>
+
+
+    <mat-divider style="margin-bottom: 8px; margin-top: 8px;"></mat-divider>
+
+
+  </div>
+
+</div>
+

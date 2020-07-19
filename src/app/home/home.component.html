@@ -1,0 +1,33 @@
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <header class="jumbotron"><h3 class="compositions-header">COMPOSITIONS</h3></header>
+  <mat-list role="list" *ngFor=" let composition of filteredCompositions">
+    <div class="composition-margin">
+      <mat-icon class="book-icon">book</mat-icon>
+      <fieldset>
+        <h3 class="text-overflow">{{composition.title}}
+
+        </h3>
+        <mat-divider></mat-divider>
+        <mat-icon class="expand-more-icon" (click)="showMore(composition.id)">expand_more</mat-icon>
+        <div id="{{composition.id}}" class="text-overflow" (click)="showMore(composition.id)">
+          <span class="header">Description:</span> {{composition.description}}</div>
+        <mat-divider></mat-divider>
+        <span><span class="header">Genres:</span>
+         <span class="genre-name" *ngFor=" let i= index;let genre of composition.compositionGenres">
+ {{genre.genreName}}<span *ngIf=" (i===composition.compositionGenres.length-1) else comma">.</span>
+    <ng-template #comma>,</ng-template>
+  </span></span>
+        <mat-divider></mat-divider>
+        <div id=wrap>
+          <div class="rightPublicationDate">Publication
+            Date: {{composition.publicationDate.slice(0, 10)}}
+          </div>
+          <button class="read-button" mat-button (click)="readComposition(composition.id)">Read</button>
+        </div>
+      </fieldset>
+      <mat-divider class="compositions-divider"></mat-divider>
+    </div>
+  </mat-list>
+  <mat-paginator [length]="compositionsAmount" [pageSize]="4" [pageSizeOptions]="[4, 10, 25, 100]"
+                 (page)="$event; onPaginateChange($event)"></mat-paginator>
+</div>

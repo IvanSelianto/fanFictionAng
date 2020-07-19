@@ -1,0 +1,62 @@
+.compositions-header {
+  display: flex;
+  font-family: Roboto Mono, monospace;
+  font-size: 48px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.text-overflow {
+  display: block;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: 24px;
+  cursor: pointer;
+}
+.header{
+  color: #3F51B5;
+  font-weight: 500;
+}
+.genre-name {
+  font-style: oblique;
+}
+#wrap {
+  position: relative;
+}
+
+.rightPublicationDate {
+  padding-top: 22px;
+  float: right;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.composition-margin {
+  margin: 6px;
+}
+
+.book-icon {
+  font-size: 96px;
+  float: left;
+  width: 10%;
+
+}
+
+.expand-more-icon {
+  float: right;
+  cursor: pointer;
+}
+
+.read-button {
+  width: 150px;
+  background-color: #E9ECEF;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.compositions-divider {
+  border-width: 2px;
+  background-color: #3F51B5;
+}

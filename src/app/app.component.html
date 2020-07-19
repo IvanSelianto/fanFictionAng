@@ -1,0 +1,79 @@
+<div id="app ">
+  <nav class="navbar navbar-expand navbar-dark toolbar">
+    <a href="/home" class="navbar-brand">
+      <img
+        src="https://cdn3.iconfinder.com/data/icons/multimedia-49/480/media_multimedia_audio_video_music_-_36-512.png"
+        style="width:30px; height: 30px;filter: invert(100%);">Fan Fiction</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="home">Home</button>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="admin">Admin Board</button>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="newcomposition">New Composition
+        </button>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <li class="search-li" [hidden]="true">
+
+        <input class="search-input"
+               type="text"
+               placeholder="Search"
+               matInput
+               [(ngModel)]="searchRequest"
+               [matAutocomplete]="auto"
+               (ngModelChange)="search()">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" class="mat-autocomplete-panel">
+
+          <mat-option *ngFor="let composition of searchResult" [value]="composition.title"
+                      (click)="readComposition(composition.id)">
+            <mat-icon>book</mat-icon>
+            {{composition.title}}
+          </mat-option>
+        </mat-autocomplete>
+
+      </li>
+
+
+      <li class="nav-item">
+        <button mat-button (click)="openSearchPanel()" class="search-icon">
+          <mat-icon>search</mat-icon>
+        </button>
+      </li>
+    </ul>
+    <ul class="navbar-nav" *ngIf="!isLoggedIn">
+
+      <li class="nav-item">
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="register">Sign Up</button>
+
+      </li>
+      <li class="nav-item">
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="login">Login</button>
+
+      </li>
+    </ul>
+
+    <ul class="navbar-nav" *ngIf="isLoggedIn">
+
+      <li class="nav-item">
+        <button mat-flat-button color="primary" class="toolbar-option"
+                routerLink="profile/{{userId}}">{{ username }}</button>
+
+      </li>
+      <li class="nav-item">
+        <button mat-flat-button color="primary" (click)="logout()" class="toolbar-option">LogOut</button>
+      </li>
+    </ul>
+
+
+  </nav>
+
+
+  <router-outlet></router-outlet>
+
+
+</div>

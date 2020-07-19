@@ -1,0 +1,25 @@
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+.full-width{
+  width: 100%;
+
+}
+textarea{
+  height: 100px
+}
+
+/*.mat-vertical-stepper-content {
+  visibility: visible!important;
+  height: 100% !important;
+}*/
+/*
+
+::ng-deep .mat-step{
+  height: 100% !important;
+  visibility:hidden !important;
+}*/

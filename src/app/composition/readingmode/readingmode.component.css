@@ -1,0 +1,35 @@
+
+.image {
+  margin-top: 2%;
+
+}
+
+.text {
+
+  text-align: justify;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+
+.right {
+  float: right;
+}
+
+.left {
+  width: 20%;
+  float: left;
+}
+
+
+.chapterNumbers {
+  margin-right: 12px;
+  margin-left: 12px;
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#wrap {
+  position: relative;
+}

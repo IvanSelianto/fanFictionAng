@@ -1,0 +1,38 @@
+.search-icon {
+  color: #f7f7f7;
+  outline: none;
+
+}
+
+.search-li {
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  margin-right: 12px;
+  width: 300px;
+
+}
+
+.search-input {
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+}
+
+::ng-deep .mat-autocomplete-panel {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.toolbar-option {
+  color: #f7f7f7;
+  font-size: 14px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  text-align: center;
+  outline: none;
+}
+
+.toolbar {
+  background: #3F51B5;
+  box-shadow: 0px 0px 10px 0px black;
+}

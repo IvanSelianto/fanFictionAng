@@ -1,0 +1,56 @@
+<div class="container">
+  <header class="jumbotron">
+    <h3 class="admin-board-header">ADMIN BOARD</h3>
+  </header>
+
+
+  <h3 class="table-header">USERS</h3>
+  <mat-form-field style="width: 100%;">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search request" #input>
+  </mat-form-field>
+
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort style="width: 100%;">
+
+      <ng-container matColumnDef="settings">
+        <th mat-header-cell *matHeaderCellDef class="settings-header-cell"></th>
+        <td mat-cell *matCellDef="let user">
+          <mat-icon class="settings-icon" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openProfile(user.id)">Sign in</button>
+            <button mat-menu-item (click)="setUserRole(user.id)">Make User</button>
+            <button mat-menu-item (click)="setAdminRole(user.id)">Make Admin</button>
+            <button mat-menu-item (click)="blockUser(user.id)">Block</button>
+            <button mat-menu-item (click)="deleteUser(user.id)">Delete</button>
+          </mat-menu>
+        </td>
+
+      </ng-container>
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="thUsername">Username</th>
+        <td mat-cell *matCellDef="let user"><span class="text-overflow">{{user.username}}</span></td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let user"><span class="text-overflow">{{user.email}}</span></td>
+      </ng-container>
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
+        <td mat-cell *matCellDef="let user" style="width: 150px;"><span
+          class="text-overflow">{{user.role.slice(5)}}</span></td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+  </div>
+</div>

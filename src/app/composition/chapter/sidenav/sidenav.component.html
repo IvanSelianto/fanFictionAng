@@ -1,0 +1,30 @@
+<mat-nav-list (mouseenter)="mouseenter()"
+              (mouseleave)="mouseleave()" class="toolbar-width">
+  <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+    <span class="full-width crop composition-title" >{{compositionName}}</span>
+    <mat-icon mat-list-icon>book</mat-icon>
+    <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}">expand_more
+    </mat-icon>
+  </mat-list-item>
+  <div class="submenu" [ngClass]="{'expanded' : showSubmenu}">
+    <cdk-virtual-scroll-viewport itemSize="5" class="example-viewport">
+      <div cdkDropList (cdkDropListDropped)="dropped($event)">
+        <div *ngFor="let item of chapters; let i = index" cdkDrag class="example-box">
+          <mat-list-item class="list" (click)="readChapter(item.id)">
+            <span class="heading-number-chapter">{{i + 1}}</span>
+            <span class="crop chapter-name">&emsp;{{item.name}}</span>
+          </mat-list-item>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</mat-nav-list>
+<div class="add-chapter-div ">
+  <button mat-fab color="primary" class="add-chapter-btn" (click)="addChapter()">
+    <mat-icon class="add-chapter-icon">add</mat-icon>
+  </button>
+</div>
+
+
+
+

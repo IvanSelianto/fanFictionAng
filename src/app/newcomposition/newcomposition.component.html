@@ -1,0 +1,75 @@
+<div class="container " *ngIf="route.children.length === 0">
+
+  <mat-vertical-stepper [linear]="!isLinear" #stepper id="stepper">
+
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Title</ng-template>
+        <mat-form-field class="full-width">
+          <mat-label>Title</mat-label>
+          <input #title
+                 matInput placeholder="Composition Title"
+                 formControlName="firstCtrl"
+                 required [(ngModel)]="form.title"
+                 maxlength="100"
+          >
+          <mat-hint align="end">{{title.value.length}} / 100</mat-hint>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Description</ng-template>
+        <mat-form-field class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea maxlength="510" #description matInput formControlName="secondCtrl"
+                    placeholder="Composition Description"
+                    required [(ngModel)]="form.description"></textarea>
+          <mat-hint align="end">{{description.value.length}} / 510</mat-hint>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Genres</ng-template>
+        <mat-form-field class="full-width">
+          <mat-label>Genres</mat-label>
+          <mat-select multiple [(ngModel)]="form.compositionGenres" formControlName="thirdCtrl">
+            <mat-option *ngFor="let genre of allGenres" [value]="genre">{{genre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+
+
+        <button mat-button (click)='onSubmit()' id="toChapters">{{value}}</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+
+
+</div>
+
+
+<router-outlet></router-outlet>
+

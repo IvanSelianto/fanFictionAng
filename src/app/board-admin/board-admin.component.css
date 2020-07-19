@@ -1,0 +1,30 @@
+.admin-board-header {
+  display: flex;
+  font-family: Roboto Mono, monospace;
+  font-size: 48px;
+  justify-content: center;
+  cursor: pointer;
+}
+.table-header {
+  display: flex;
+  font-family: Roboto Mono, monospace;
+  font-size: 32px;
+  justify-content: center;
+}
+.settings-icon {
+  margin-top: 5px;
+  cursor: pointer;
+}
+.text-overflow {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-right: auto;
+}
+.thUsername{
+  width: 20%;
+}
+.settings-header-cell {
+  width: 80px;
+}

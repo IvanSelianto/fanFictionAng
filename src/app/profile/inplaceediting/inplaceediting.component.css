@@ -1,0 +1,42 @@
+.in-place-editing-overlay {
+  position: absolute;
+  top: 5px;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  opacity: 0;
+  transition: .3s ease;
+
+}
+
+.in-place-editing-container:hover .in-place-editing-overlay {
+  opacity: 1;
+}
+
+.in-place-editing-edit-icon {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.in-place-editing-container {
+  position: relative;
+
+}
+
+.in-place-editing-btn {
+  float: left;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.input-size {
+  width: 600px;
+  height: 20px;
+  font-size: 24px;
+}

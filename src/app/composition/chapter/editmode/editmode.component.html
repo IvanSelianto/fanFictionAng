@@ -1,0 +1,40 @@
+<div class="container ">
+  <form class="chapter-form">
+
+    <div>
+
+      <input class="loadImage-edit" type="file" style="display:none" accept="image/*" #file
+             (change)="loadImage(file.files)">
+
+      <mat-icon (click)="callLoadImage()" class="add-image-icon-edit">add_photo_alternate</mat-icon>
+      <div class="image-container container-img">
+        <img [src]="this.compositionService.imgUrl" height="200" width="auto" id="img" *ngIf="this.compositionService.imgUrl">
+        <div class="overlay">
+
+          <mat-icon aria-hidden="false" (click)="openBottomSheet() " class="edit-icon">
+            edit
+          </mat-icon>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <mat-form-field class="full-width padding ">
+      <mat-label>Chapter Title</mat-label>
+      <input matInput placeholder="Chapter Title" name="name" [(ngModel)]="name" id="chapterTitle">
+
+    </mat-form-field>
+
+
+    <mat-form-field class="full-width">
+      <textarea matInput name="text" id="textAreaChapterEditMode" value="{{text}}"></textarea>
+    </mat-form-field>
+    <button mat-raised-button (click)="onSubmit()">Save</button>
+
+
+  </form>
+
+</div>

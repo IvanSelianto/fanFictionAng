@@ -1,0 +1,26 @@
+<div class="in-place-editing-container" (click)='editMode=true'>
+  <div *ngIf='!editMode'> {{ data}}
+  </div>
+  <div class="in-place-editing-overlay">
+    <button mat-fab color="primary" class="in-place-editing-btn">
+      <mat-icon class="in-place-editing-edit-icon">edit</mat-icon>
+    </button>
+  </div>
+
+</div>
+
+<mat-form-field *ngIf='editMode' class="input-size">
+
+  <input required #message matInput maxlength="20" type="text" [(ngModel)]="data"
+         (keydown.enter)='$event.target.blur()'
+         (focusout)="onFocusOut(data)">
+  <mat-hint align="end">{{message.value.length}} / 20</mat-hint>
+  <button mat-button *ngIf="data" matSuffix mat-icon-button>
+    <mat-icon>done</mat-icon>
+  </button>
+  <button mat-button *ngIf="data" matSuffix mat-icon-button (click)="data=''">
+    <mat-icon>close</mat-icon>
+  </button>
+
+</mat-form-field>
+
