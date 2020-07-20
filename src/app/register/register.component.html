@@ -1,4 +1,5 @@
 <div class="col-md-12">
+
   <div class="card card-container">
     <img
       id="profile-img"
@@ -8,13 +9,11 @@
     <form
       *ngIf="!isSuccessful"
       name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm"
-      novalidate
-    >
+      novalidate>
       <div class="form-group">
         <mat-form-field class="full-width">
-          <mat-label>Username</mat-label>
+          <mat-label>{{"Register.Username"| translate}}</mat-label>
           <input matInput type="text"
                  name="username" [(ngModel)]="form.username" required
                  minlength="3"
@@ -23,56 +22,59 @@
         </mat-form-field>
 
         <div class="mat-error" *ngIf="f.submitted && username.invalid">
-          <div *ngIf="username.errors.required">Username is required</div>
+          <div *ngIf="username.errors.required">{{"Register.Username is required"|translate}}</div>
           <div *ngIf="username.errors.minlength">
-            Username must be at least 3 characters
+          {{"Register.Username must be at least 3 characters"| translate}}
           </div>
           <div *ngIf="username.errors.maxlength">
-            Username must be at most 20 characters
+            {{"Register.Username must be at most 20 characters"|translate}}
           </div>
         </div>
       </div>
       <div class="form-group">
         <mat-form-field class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>{{"Register.Email"| translate}}</mat-label>
           <input matInput type="email"
                  name="email" [(ngModel)]="form.email" required email #email="ngModel"/>
         </mat-form-field>
         <div class="mat-error" *ngIf="f.submitted && email.invalid">
-          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.required">{{"Register.Email is required"| translate}}</div>
           <div *ngIf="email.errors.email">
-            Email must be a valid email address
+            {{"Register.Email must be a valid email address"| translate}}
           </div>
         </div>
       </div>
       <div class="form-group">
         <mat-form-field class="full-width">
-          <mat-label>Password</mat-label>
-          <input matInput type="password"
+          <mat-label>{{"Register.Password"| translate}}</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"
                  name="password" [(ngModel)]="form.password" required
                  minlength="6"
                  #password="ngModel"/>
+          <button mat-icon-button matSuffix style="height: 32px; width:32px" (click)="hide = !hide">
+            <mat-icon style="font-size: 24px" >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
         <div class="mat-error" *ngIf="f.submitted && password.invalid">
           <div *ngIf="password.errors.required">
-            Password is required
+            {{"Register.Password is required"|translate}}
           </div>
           <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+            {{"Register.Password must be at least 6 characters"|translate}}
           </div>
         </div>
       </div>
       <div class="form-group">
-        <button mat-raised-button class="full-width" color="primary">Sign Up</button>
+        <button mat-raised-button class="full-width" color="primary" (click)="f.form.valid && onSubmit()">{{"Register.Sign Up"| translate}}</button>
       </div>
 
       <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-        Signup failed!<br/>{{ errorMessage }}
+        {{"Register.Signup failed!"| translate}}<br/>{{ errorMessage }}
       </div>
     </form>
 
     <div class="alert alert-success" *ngIf="isSuccessful">
-      Please verify your email!
+     {{"Register.Please verify your email!"|translate}}
     </div>
   </div>
 </div>

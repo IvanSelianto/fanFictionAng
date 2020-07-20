@@ -1,14 +1,14 @@
 <div class="container" *ngIf="composition && actrouter.children.length===0" >
   <header class="jumbotron jumbotron-fluid" >
     <h3 class="compositions-header" >{{composition.title}}</h3>
-    <div class="author">Author: {{composition.author.username}}</div>
+    <div class="author">{{"Composition.Author"|translate}}: {{composition.author.username}}</div>
 
   </header>
   <div class="start-reading-button-div">
-    <button mat-raised-button color="primary" class="start-reading-button" (click)="readFirstChapter()">Begin Read from First Chapter</button>
+    <button mat-raised-button color="primary" class="start-reading-button" (click)="readFirstChapter()">{{"Composition.Begin Read from First Chapter"|translate}}</button>
   </div>
 
-  <span class="genre-header">Genres:</span>
+  <span class="genre-header">{{"Composition.Genres"|translate}}:</span>
   <span class="genre-name" *ngFor=" let i= index;let genre of composition.compositionGenres">
  {{genre.genreName}}<span *ngIf=" (i===composition.compositionGenres.length-1) else comma">.</span>
     <ng-template #comma>,</ng-template>
@@ -16,7 +16,7 @@
   <mat-divider class="divider"></mat-divider>
 
 
-  <div class="description-header">Description:</div>
+  <div class="description-header">{{"Composition.Description"|translate}}:</div>
   <p class="composition-description">{{composition.description}}</p>
 
 
@@ -25,7 +25,7 @@
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title class="content-header">
-        Сontent:
+        {{"Composition.Сontent"|translate}}:
       </mat-panel-title>
       <mat-icon>expand_more</mat-icon>
     </mat-expansion-panel-header>
@@ -45,7 +45,7 @@
 
     </div>-->
   <mat-divider class="divider"></mat-divider>
-  <div class="comments-header"> Comments
+  <div class="comments-header"> {{"Composition.Comments"|translate}}
     <button mat-fab color="primary" class="add-comment-btn" (click)="openCommentArea()">
       <mat-icon>add</mat-icon>
     </button>
@@ -55,8 +55,8 @@
   <div id="commentArea" [hidden]="true" style="  margin-bottom: 12px ;">
 
     <mat-form-field class="comment-area">
-      <mat-label>Leave a comment</mat-label>
-      <textarea [(ngModel)]="addedCommentText" matInput placeholder="Ex. It makes me feel..."></textarea>
+      <mat-label>{{"Composition.Leave a comment"|translate}}</mat-label>
+      <textarea [(ngModel)]="addedCommentText" matInput placeholder="{{'Composition.Comment'|translate}}"></textarea>
     </mat-form-field>
 
     <div>
@@ -67,7 +67,7 @@
       </div>
 
       <div class="publicate-comment">
-        <button mat-raised-button color="primary" (click)="addComment()">Add Comment</button>
+        <button mat-raised-button color="primary" (click)="addComment()">{{"Composition.Add Comment"|translate}}</button>
       </div>
 
     </div>
@@ -80,11 +80,8 @@
       <button id="{{comment.id}}" disabled style="background-color: #3F51B5" mat-fab class="comment-img-profile">
         <div class="author-name-onimage">{{comment.commentAuthor.username.slice(0, 1).toUpperCase()}}</div>
       </button>
-
-      <div class="comment-author">  {{comment.commentAuthor.username}}</div>
-
+      <div class="comment-author">{{comment.commentAuthor.username}}</div>
       <div class="comment-text"> {{comment.text}}</div>
-
     </div>
 
     <mat-divider class="divider"></mat-divider>

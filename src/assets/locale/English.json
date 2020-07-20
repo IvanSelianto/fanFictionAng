@@ -1,0 +1,101 @@
+{
+  "Register": {
+    "Username": "Username",
+    "Email": "Email",
+    "Password": "Password",
+    "Sign Up": "Sign Up",
+    "Username is required": "Username is required",
+    "Email is required": "Email is required",
+    "Email must be a valid email address": "Email must be a valid email address",
+    "Password is required": "Password is required",
+    "Password must be at least 6 characters": "Password must be at least 6 characters",
+    "Signup failed!": "Signup failed!",
+    "Please verify your email!": "Please verify your email!",
+    "Username must be at least 3 characters": "Username must be at least 3 characters",
+    "Username must be at most 20 characters": "Username must be at most 20 characters"
+  },
+  "MainComponent": {
+    "Home": "Home",
+    "Admin Board": "Admin Board",
+    "New Composition": "New Composition",
+    "Sign Up": "Sign Up",
+    "Logout": "Logout",
+    "Login": "Login",
+    "Search": "Search"
+  },
+  "Login": {
+    "Username": "Username",
+    "Username is required!": "Username is required!",
+    "Password is required": "Password is required",
+    "Password must be at least 6 characters": "Password must be at least 6 characters",
+    "Password": "Password",
+    "Login": "Login",
+    "Login failed": "Login failed"
+  },
+  "Profile": {
+    "COMPOSITIONS": "COMPOSITIONS",
+    "Search": "Search",
+    "Add Chapter": "Add Chapter",
+    "Read": "Read",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Title": "Title",
+    "Description": "Description",
+    "Chapters Amount": "Chapters Amount"
+  },
+  "New Composition": {
+    "Title": "Title",
+    "Description": "Description",
+    "Back": "Back",
+    "Next": "Next",
+    "Genres": "Genres",
+    "Done": "Done",
+    "You are now done.": "You are now done.",
+    "Reset": "Reset",
+    "Create First Chapter!": "Create First Chapter!",
+    "Save Changes": "Save Changes"
+  },
+  "Home": {
+    "COMPOSITIONS": "COMPOSITIONS",
+    "Description": "Description",
+    "Genres": "Genres",
+    "Publication Date": "Publication Date",
+    "Read": "Read"
+  },
+  "Composition": {
+    "Begin Read from First Chapter": "Begin Read from First Chapter",
+    "Genres": "Genres",
+    "Description": "Description",
+    "Сontent": "Сontent",
+    "Comments": "Comments",
+    "Leave a comment": "Leave a comment",
+    "Add Comment": "Add Comment",
+    "Comment": "Comment",
+    "Author": "Author"
+  },
+  "Chapter": {
+    "Chapter Title": "Chapter Title",
+    "Save": "Save"
+  },
+  "EditSheet": {
+    "Edit image": "Edit image",
+    "Upload new image": "Upload new image",
+    "Delete": "Delete",
+    "Remove your image": "Remove your image"
+  },
+  "Admin Board": {
+    "ADMIN BOARD": "ADMIN BOARD",
+    "USERS": "USERS",
+    "Search request": "Search request",
+    "Sign in": "Sign in",
+    "Make User": "Make User",
+    "Make Admin": "Make Admin",
+    "Block": "Block",
+    "Delete": "Delete",
+    "Username": "Username",
+    "Email": "Email",
+    "Role": "Role"
+  },
+  "English": "English",
+  "Russian": "Russian"
+}

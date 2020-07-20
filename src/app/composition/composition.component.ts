@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CompositionService} from '../_services/composition.service';
 
 import {MatPaginator} from '@angular/material/paginator';
-import {BehaviorSubject} from 'rxjs';
+
 import {TokenStorageService} from '../_services/token-storage.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {UserService} from '../_services/user.service';
@@ -42,7 +42,7 @@ export class CompositionComponent implements OnInit {
   }
 
   initializeWebSocketConnection() {
-    const serverUrl = 'https://fanfictionback.herokuapp.com/api/test/socket';
+    const serverUrl = 'http://localhost:8080/api/test/socket';
     const ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
     this.stompClient.debug = null;

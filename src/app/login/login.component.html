@@ -5,35 +5,42 @@
       src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
       class="profile-img-card"
     />
-    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <form *ngIf="!isLoggedIn" name="form" #f="ngForm" novalidate>
       <div class="form-group">
         <mat-form-field class="full-width">
-          <mat-label>Username</mat-label>
+          <mat-label>{{"Login.Username"|translate}}</mat-label>
           <input matInput type="text" name="username" [(ngModel)]="form.username" required #username="ngModel"/>
         </mat-form-field>
         <div class="mat-error" role="alert" *ngIf="f.submitted && username.invalid">
-          Username is required!
+          {{"Login.Username is required!"|translate}}
         </div>
       </div>
       <div class="form-group">
-        <mat-form-field class="example-full-width" style="width: 100%;">
-          <mat-label>Password</mat-label>
-          <input matInput [(ngModel)]="form.password" type="password" name="password" minlength="6" #password="ngModel" required/>
+        <mat-form-field style="width: 100%;">
+            <mat-label>{{"Register.Password"| translate}}</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'"
+                   name="password" [(ngModel)]="form.password" required
+                   minlength="6"
+                   #password="ngModel"/>
+            <button mat-icon-button matSuffix style="height: 32px; width:32px" (click)="hide = !hide">
+              <mat-icon style="font-size: 24px">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+
         </mat-form-field>
 
         <div class="mat-error" role="alert" *ngIf="f.submitted && password.invalid">
-          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.required">{{"Login.Password is required"|translate}}</div>
           <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+            {{"Login.Password must be at least 6 characters"|translate}}
           </div>
         </div>
       </div>
       <div class="form-group">
-        <button mat-raised-button class="full-width" color="primary">Login</button>
+        <button mat-raised-button class="full-width" color="primary"  (click)="f.form.valid && onSubmit()">{{"Login.Login"|translate}}</button>
       </div>
       <div class="form-group">
         <div class="mat-error" role="alert" *ngIf="f.submitted && isLoginFailed">
-          Login failed: {{ errorMessage }}
+          {{"Login.Login failed"|translate}}: {{ errorMessage }}
         </div>
       </div>
     </form>

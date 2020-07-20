@@ -23,8 +23,8 @@
 
 
     <mat-form-field class="full-width padding ">
-      <mat-label>Chapter Title</mat-label>
-      <input matInput placeholder="Chapter Title" name="name" [(ngModel)]="name" id="chapterTitle">
+      <mat-label>{{"Chapter.Chapter Title"|translate}}</mat-label>
+      <input matInput placeholder="{{'Chapter.Chapter Title'|translate}}" name="name"  [(ngModel)]="name" id="chapterTitle">
 
     </mat-form-field>
 
@@ -32,7 +32,7 @@
     <mat-form-field class="full-width">
       <textarea matInput name="text" id="textAreaChapterEditMode" value="{{text}}"></textarea>
     </mat-form-field>
-    <button mat-raised-button (click)="onSubmit()">Save</button>
+    <button mat-raised-button (click)="onSubmit()">{{"Chapter.Save"|translate}}</button>
 
 
   </form>

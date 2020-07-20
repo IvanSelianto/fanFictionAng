@@ -18,7 +18,6 @@
           <div class="overlay" >
 
             <mat-icon aria-hidden="false" (click)="openBottomSheet() " class="edit-icon">
-
               edit
             </mat-icon>
 
@@ -30,8 +29,8 @@
 
 
       <mat-form-field class="full-width padding ">
-        <mat-label>Chapter Title</mat-label>
-        <input matInput placeholder="Chapter Title" name="name" [(ngModel)]="form.name" id="chapterTitle">
+        <mat-label>{{"Chapter.Chapter Title"|translate}}</mat-label>
+        <input matInput placeholder="{{'Chapter.Chapter Title'|translate}}"  [(ngModel)]="form.name" id="chapterTitle">
       </mat-form-field>
 
       <editor [init]="{selector: '#textAreaChapter',
@@ -45,7 +44,7 @@
       <mat-form-field class="full-width">
         <textarea matInput name="text" id="textAreaChapter"></textarea>
       </mat-form-field>
-      <button mat-raised-button (click)="onSubmit()">Save</button>
+      <button mat-raised-button (click)="onSubmit()">{{"Chapter.Save"|translate}}</button>
 
 
     </form>

@@ -2,6 +2,9 @@ import {Component, DoCheck, OnChanges, OnInit} from '@angular/core';
 import {TokenStorageService} from './_services/token-storage.service';
 import {Router} from '@angular/router';
 import {CompositionService} from './_services/composition.service';
+import {TranslateService} from '@ngx-translate/core';
+import {environment} from '../environments/environment';
+import {UserService} from './_services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,10 +21,17 @@ export class AppComponent implements OnInit {
   userId: number;
 
   constructor(public tokenStorageService: TokenStorageService,
-              public router: Router, private compositionService: CompositionService) {
+              public router: Router, private compositionService: CompositionService, public translate: TranslateService) {
+    translate.addLangs(environment.locales);
   }
 
   ngOnInit() {
+    if (localStorage.getItem('language')) {
+      this.translate.use(localStorage.getItem('language'));
+    } else {
+      this.translate.use(environment.defaultLocale);
+    }
+
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
@@ -57,5 +67,10 @@ export class AppComponent implements OnInit {
 
   readComposition(compositionId) {
     this.router.navigateByUrl('/composition/' + compositionId);
+  }
+
+  setLanguage(language) {
+    this.translate.use(language);
+    localStorage.setItem('language', language);
   }
 }

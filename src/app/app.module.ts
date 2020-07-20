@@ -16,7 +16,7 @@ import {ReadingmodeComponent, SanitizeHtmlPipe} from './composition/readingmode/
 import {EditmodeComponent} from './composition/chapter/editmode/editmode.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
@@ -42,8 +42,12 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {InplaceeditingComponent} from './profile/inplaceediting/inplaceediting.component';
-import { CompositionComponent } from './composition/composition.component';
+import {CompositionComponent} from './composition/composition.component';
 import {MatTableModule} from '@angular/material/table';
+import {MissingTranslationHandler, TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {MissingTranslationService} from './_services/missing-translation.service';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -94,6 +98,17 @@ import {MatTableModule} from '@angular/material/table';
     MatPaginatorModule,
     MatExpansionModule,
     MatTableModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+      missingTranslationHandler: {provide: MissingTranslationHandler, useClass: MissingTranslationService},
+      useDefaultLang: false,
+    }),
+    MatSlideToggleModule
+
   ],
   providers: [authInterceptorProviders, {provide: MatBottomSheetRef, useValue: {}}],
   bootstrap: [AppComponent],
@@ -101,4 +116,7 @@ import {MatTableModule} from '@angular/material/table';
 })
 
 export class AppModule {
+}
+export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
+  return new TranslateHttpLoader(http, './assets/locale/', '.json');
 }

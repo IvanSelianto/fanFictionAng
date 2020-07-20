@@ -4,11 +4,11 @@
 
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Title</ng-template>
+        <ng-template matStepLabel>{{"New Composition.Title"|translate}}</ng-template>
         <mat-form-field class="full-width">
-          <mat-label>Title</mat-label>
+          <mat-label>{{"New Composition.Title"|translate}}</mat-label>
           <input #title
-                 matInput placeholder="Composition Title"
+                 matInput placeholder="{{'New Composition.Title'| translate}}"
                  formControlName="firstCtrl"
                  required [(ngModel)]="form.title"
                  maxlength="100"
@@ -16,24 +16,24 @@
           <mat-hint align="end">{{title.value.length}} / 100</mat-hint>
         </mat-form-field>
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperNext>{{"New Composition.Next"|translate}}</button>
         </div>
       </form>
 
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
       <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Description</ng-template>
+        <ng-template matStepLabel>{{"New Composition.Description"|translate}}</ng-template>
         <mat-form-field class="full-width">
-          <mat-label>Description</mat-label>
+          <mat-label>{{"New Composition.Description"|translate}}</mat-label>
           <textarea maxlength="510" #description matInput formControlName="secondCtrl"
-                    placeholder="Composition Description"
+                    placeholder="{{'New Composition.Description'| translate}}"
                     required [(ngModel)]="form.description"></textarea>
           <mat-hint align="end">{{description.value.length}} / 510</mat-hint>
         </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperPrevious>{{"New Composition.Back"|translate}}</button>
+          <button mat-button matStepperNext>{{"New Composition.Next"|translate}}</button>
         </div>
       </form>
     </mat-step>
@@ -41,28 +41,28 @@
 
     <mat-step [stepControl]="thirdFormGroup">
       <form [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>Genres</ng-template>
+        <ng-template matStepLabel>{{"New Composition.Genres"|translate}}</ng-template>
         <mat-form-field class="full-width">
-          <mat-label>Genres</mat-label>
+          <mat-label>{{"New Composition.Genres"|translate}}</mat-label>
           <mat-select multiple [(ngModel)]="form.compositionGenres" formControlName="thirdCtrl">
             <mat-option *ngFor="let genre of allGenres" [value]="genre">{{genre}}</mat-option>
           </mat-select>
         </mat-form-field>
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperPrevious>{{"New Composition.Back"|translate}}</button>
+          <button mat-button matStepperNext>{{"New Composition.Next"|translate}}</button>
         </div>
       </form>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+      <ng-template matStepLabel>{{"New Composition.Done"|translate}}</ng-template>
+      <p>{{"New Composition.You are now done."|translate}}</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button matStepperPrevious>{{"New Composition.Back"|translate}}</button>
+        <button mat-button (click)="stepper.reset()">{{"New Composition.Reset"|translate}}</button>
 
 
-        <button mat-button (click)='onSubmit()' id="toChapters">{{value}}</button>
+        <button mat-button (click)='onSubmit()' id="toChapters">{{value|translate}}</button>
       </div>
     </mat-step>
   </mat-vertical-stepper>

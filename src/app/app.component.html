@@ -6,23 +6,27 @@
         style="width:30px; height: 30px;filter: invert(100%);">Fan Fiction</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-        <button mat-flat-button color="primary" class="toolbar-option" routerLink="home">Home</button>
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="home">{{"MainComponent.Home"|translate}}</button>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
-        <button mat-flat-button color="primary" class="toolbar-option" routerLink="admin">Admin Board</button>
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="admin">{{"MainComponent.Admin Board"|translate}}</button>
       </li>
       <li class="nav-item" *ngIf="isLoggedIn">
-        <button mat-flat-button color="primary" class="toolbar-option" routerLink="newcomposition">New Composition
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="newcomposition">{{"MainComponent.New Composition"|translate}}
         </button>
       </li>
     </ul>
+
+
+
+
 
     <ul class="navbar-nav">
       <li class="search-li" [hidden]="true">
 
         <input class="search-input"
                type="text"
-               placeholder="Search"
+               placeholder="{{'MainComponent.Search'| translate}}"
                matInput
                [(ngModel)]="searchRequest"
                [matAutocomplete]="auto"
@@ -39,20 +43,29 @@
       </li>
 
 
-      <li class="nav-item">
-        <button mat-button (click)="openSearchPanel()" class="search-icon">
-          <mat-icon>search</mat-icon>
-        </button>
-      </li>
+
+
     </ul>
+
+    <button mat-button (click)="openSearchPanel()" class="search-icon">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button mat-flat-button color="primary" class="toolbar-option" mat-button [matMenuTriggerFor]="menu" >
+      <mat-icon>language</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item *ngFor="let lang of translate.getLangs()" (click)="setLanguage(lang)">{{lang|translate}}</button>
+    </mat-menu>
+
     <ul class="navbar-nav" *ngIf="!isLoggedIn">
 
       <li class="nav-item">
-        <button mat-flat-button color="primary" class="toolbar-option" routerLink="register">Sign Up</button>
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="register">{{"MainComponent.Sign Up"|translate}}</button>
 
       </li>
       <li class="nav-item">
-        <button mat-flat-button color="primary" class="toolbar-option" routerLink="login">Login</button>
+        <button mat-flat-button color="primary" class="toolbar-option" routerLink="login">{{"MainComponent.Login"|translate}}</button>
 
       </li>
     </ul>
@@ -65,7 +78,7 @@
 
       </li>
       <li class="nav-item">
-        <button mat-flat-button color="primary" (click)="logout()" class="toolbar-option">LogOut</button>
+        <button mat-flat-button color="primary" (click)="logout()" class="toolbar-option">{{"MainComponent.Logout"|translate}}</button>
       </li>
     </ul>
 

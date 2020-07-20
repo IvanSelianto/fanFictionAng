@@ -10,49 +10,48 @@
       <app-inplaceediting [data]='currentUser.username ' (focusOut)='editUsername($event)'></app-inplaceediting>
     </h3>
     <div class="mat-error" style="text-align: center;">{{errorMessage}}</div>
-    <div style="text-align: center">{{ currentUser.email }}</div>
+    <div style="text-align: center">{{currentUser.email}}</div>
   </header>
 
 
   <h3 style=" font-size: 32px;" class="profile-name">
-    COMPOSITIONS
+    {{"Profile.COMPOSITIONS"|translate}}
   </h3>
   <mat-form-field>
-    <mat-label>Search</mat-label>
+    <mat-label>{{"Profile.Search"|translate}}</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Search request" #input>
   </mat-form-field>
 
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-
       <ng-container matColumnDef="settings">
         <th mat-header-cell *matHeaderCellDef class="settings-header-cell"></th>
         <td mat-cell *matCellDef="let element">
           <mat-icon class="settings-icon" [matMenuTriggerFor]="menu">more_vert</mat-icon>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="addChapter(element.compositionId)">Add Chapter</button>
-            <button mat-menu-item (click)="readComposition(element)">Read</button>
+            <button mat-menu-item (click)="addChapter(element.compositionId)">{{"Profile.Add Chapter"| translate}}</button>
+            <button mat-menu-item (click)="readComposition(element)">{{"Profile.Read"| translate}}</button>
 
-            <button mat-menu-item (click)="editComposition(element)">Edit</button>
-            <button mat-menu-item (click)="deleteComposition(element.compositionId)">Delete</button>
+            <button mat-menu-item (click)="editComposition(element)">{{"Profile.Edit"| translate}}</button>
+            <button mat-menu-item (click)="deleteComposition(element.compositionId)">{{"Profile.Delete"| translate}}</button>
           </mat-menu>
         </td>
 
       </ng-container>
       <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="thTitle">Title</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="thTitle">{{"Profile.Title"|translate}}</th>
         <td mat-cell *matCellDef="let element"><span class="text-overflow">{{element.title}}</span></td>
       </ng-container>
 
 
       <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{"Profile.Description"|translate}}</th>
         <td mat-cell *matCellDef="let element"><span class="text-overflow">{{element.description}}</span></td>
       </ng-container>
 
       <ng-container matColumnDef="chaptersAmount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="thChaptersAmount">Chapters Amount</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="thChaptersAmount">{{"Profile.Chapters Amount"|translate}}</th>
         <td mat-cell *matCellDef="let element" class="tdChaptersAmount"> {{element.chaptersAmount}}</td>
       </ng-container>
 
