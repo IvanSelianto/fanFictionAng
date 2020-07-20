@@ -5,7 +5,6 @@ import {SidenavComponent} from './sidenav/sidenav.component';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {TokenStorageService} from '../../_services/token-storage.service';
 import {EditsheetComponent} from './editmode/editsheet/editsheet.component';
-import {EditmodeComponent} from './editmode/editmode.component';
 
 declare var tinymce: any;
 
