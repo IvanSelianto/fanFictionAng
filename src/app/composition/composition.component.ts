@@ -42,7 +42,7 @@ export class CompositionComponent implements OnInit {
   }
 
   initializeWebSocketConnection() {
-    const serverUrl = 'http://localhost:8080/api/test/socket';
+    const serverUrl = 'https://fanfictionback.herokuapp.com/api/test/socket';
     const ws = new SockJS(serverUrl);
     this.stompClient = Stomp.over(ws);
     this.stompClient.debug = null;
