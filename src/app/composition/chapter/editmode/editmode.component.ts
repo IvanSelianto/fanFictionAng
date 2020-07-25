@@ -46,9 +46,6 @@ export class EditmodeComponent implements OnInit {
       tinymce.remove();
 
       tinymce.init({
-        skin: false,
-
-        content_css: 'CUSTOM',
         selector: '#textAreaChapterEditMode',
         plugins: [
           'advlist autolink lists link image charmap print preview anchor',
