@@ -8,7 +8,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../_services/user.service';
-import {AuthService} from '../_services/auth.service';
 import {AppComponent} from '../app.component';
 
 export class Composition {

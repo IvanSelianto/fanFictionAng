@@ -1,10 +1,10 @@
-import {Component, DoCheck, OnChanges, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit, Renderer2, RendererFactory2} from '@angular/core';
 import {TokenStorageService} from './_services/token-storage.service';
 import {Router} from '@angular/router';
 import {CompositionService} from './_services/composition.service';
 import {TranslateService} from '@ngx-translate/core';
 import {environment} from '../environments/environment';
-import {UserService} from './_services/user.service';
+
 
 @Component({
   selector: 'app-root',
@@ -19,13 +19,26 @@ export class AppComponent implements OnInit {
   searchRequest: string;
   searchResult: any;
   userId: number;
+  darkMode: boolean;
+  renderer: Renderer2;
+  @HostBinding('class') componentCssClass;
 
   constructor(public tokenStorageService: TokenStorageService,
-              public router: Router, private compositionService: CompositionService, public translate: TranslateService) {
+              public router: Router, private compositionService: CompositionService, public translate: TranslateService, private rendererFactory: RendererFactory2) {
     translate.addLangs(environment.locales);
+    this.renderer = rendererFactory.createRenderer(null, null);
+    if (localStorage.getItem('theme') === 'dark-theme') {
+      this.darkMode = true;
+      this.componentCssClass = 'dark-theme';
+      this.renderer.addClass(document.body, this.componentCssClass);
+    } else {
+      this.renderer.removeClass(document.body, this.componentCssClass);
+      this.componentCssClass = null;
+    }
   }
 
   ngOnInit() {
+
     if (localStorage.getItem('language')) {
       this.translate.use(localStorage.getItem('language'));
     } else {
@@ -73,4 +86,18 @@ export class AppComponent implements OnInit {
     this.translate.use(language);
     localStorage.setItem('language', language);
   }
+
+
+  onSetTheme(darkMode) {
+    if (!darkMode) {
+      this.componentCssClass = 'dark-theme';
+      localStorage.setItem('theme', 'dark-theme');
+      this.renderer.addClass(document.body, this.componentCssClass);
+    } else {
+      this.renderer.removeClass(document.body, this.componentCssClass);
+      localStorage.setItem('theme', null);
+      this.componentCssClass = null;
+    }
+  }
+
 }

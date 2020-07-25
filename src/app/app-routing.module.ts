@@ -11,14 +11,19 @@ import {ChapterComponent} from './composition/chapter/chapter.component';
 import {ReadingmodeComponent} from './composition/readingmode/readingmode.component';
 import {EditmodeComponent} from './composition/chapter/editmode/editmode.component';
 import {CompositionComponent} from './composition/composition.component';
+import {VkAuthenticationComponent} from './vk-authentication/vk-authentication.component';
+import {GoogleAuthenticationComponent} from './google-authentication/google-authentication.component';
 
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'vk/auth', component: VkAuthenticationComponent},
+  {path: 'google/auth', component: GoogleAuthenticationComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile/:userId', component: ProfileComponent},
   {path: 'admin', component: BoardAdminComponent},
+
   {
     path: 'composition/:compositionId',
     component: CompositionComponent,
@@ -48,9 +53,7 @@ const routes: Routes = [
     path: 'newcomposition/:compositionId',
     component: NewcompositionComponent
   },
-  {path:  '**', redirectTo: 'home', pathMatch: 'full'},
-
-
+  {path:  '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

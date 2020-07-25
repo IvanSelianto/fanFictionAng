@@ -1,11 +1,19 @@
-<div class="container" *ngIf="composition && actrouter.children.length===0" >
-  <header class="jumbotron jumbotron-fluid" >
-    <h3 class="compositions-header" >{{composition.title}}</h3>
+<div class="container" *ngIf="composition && actrouter.children.length===0">
+  <button mat-fab color="primary"
+          style="float: right;margin-right:24px;margin-top: 12px "
+          class="add-comment-btn"
+          matTooltip="{{'Composition.Export to PDF'| translate}}" (click)="exportToPdf(composition.compositionId)">
+    <mat-icon style="text-align: center; margin: auto; justify-content: center">picture_as_pdf</mat-icon>
+  </button>
+  <header class="jumbotron jumbotron-fluid">
+
+    <h3 class="compositions-header">{{composition.title}}</h3>
     <div class="author">{{"Composition.Author"|translate}}: {{composition.author.username}}</div>
 
   </header>
   <div class="start-reading-button-div">
-    <button mat-raised-button color="primary" class="start-reading-button" (click)="readFirstChapter()">{{"Composition.Begin Read from First Chapter"|translate}}</button>
+    <button mat-raised-button color="primary" class="start-reading-button"
+            (click)="readFirstChapter()">{{"Composition.Begin Read from First Chapter"|translate}}</button>
   </div>
 
   <span class="genre-header">{{"Composition.Genres"|translate}}:</span>
@@ -37,13 +45,6 @@
       <mat-divider></mat-divider>
     </mat-list>
   </mat-expansion-panel>
-  <!--  <div class="tags">
-
-      <mat-chip-list *ngFor="let tag of tags">
-        <mat-chip>{{tag}}</mat-chip>
-      </mat-chip-list>
-
-    </div>-->
   <mat-divider class="divider"></mat-divider>
   <div class="comments-header"> {{"Composition.Comments"|translate}}
     <button mat-fab color="primary" class="add-comment-btn" (click)="openCommentArea()">
@@ -60,14 +61,16 @@
     </mat-form-field>
 
     <div>
-      <div style="  display: inline;">
+      <div style="display: inline;">
         <button mat-icon-button (click)="closeCommentArea()">
+
           <mat-icon class="cancel-button">west</mat-icon>
         </button>
       </div>
 
       <div class="publicate-comment">
-        <button mat-raised-button color="primary" (click)="addComment()">{{"Composition.Add Comment"|translate}}</button>
+        <button mat-raised-button color="primary"
+                (click)="addComment()">{{"Composition.Add Comment"|translate}}</button>
       </div>
 
     </div>

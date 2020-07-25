@@ -34,6 +34,7 @@ export class ChapterComponent implements OnInit {
         if (this.tokenStorageService.getUser() === null) {
           this.router.navigateByUrl('login');
         } else if (this.tokenStorageService.getUser().username !== this.composition.author.username) {
+
           this.router.navigateByUrl('home');
         } else {
           this.compositionId = this.compositionService.compositionId;
@@ -41,6 +42,7 @@ export class ChapterComponent implements OnInit {
 
       });
     } else {
+
       this.router.navigateByUrl('home');
 
     }
@@ -88,5 +90,6 @@ export class ChapterComponent implements OnInit {
     this.router.navigate(['/composition/' + this.compositionId + '/chapter/' + this.chapter.id + '/readingmode']);
 
   }
+
 }
 

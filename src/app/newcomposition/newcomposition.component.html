@@ -44,7 +44,7 @@
         <ng-template matStepLabel>{{"New Composition.Genres"|translate}}</ng-template>
         <mat-form-field class="full-width">
           <mat-label>{{"New Composition.Genres"|translate}}</mat-label>
-          <mat-select multiple [(ngModel)]="form.compositionGenres" formControlName="thirdCtrl">
+          <mat-select multiple formControlName="thirdCtrl" [(ngModel)]="form.compositionGenres">
             <mat-option *ngFor="let genre of allGenres" [value]="genre">{{genre}}</mat-option>
           </mat-select>
         </mat-form-field>

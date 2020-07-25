@@ -1,0 +1,127 @@
+@import '~@angular/material/theming';
+
+$bv-brand: (
+  50 : #f7f0ff,
+  100 : #ebdbfe,
+  200 : #ddc3fe,
+  300 : #cfaafd,
+  400 : #c598fc,
+  500 : #bb86fc,
+  600 : #b57efc,
+  700 : #ac73fb,
+  800 : #a469fb,
+  900 : #9656fa,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #f9f6ff,
+  A700 : #e9dcff,
+  contrast: (
+    50 : #ffffff,
+    100 : #ffffff,
+    200 : #ffffff,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+$dark-primary: mat-palette($bv-brand);
+$dark-accent: mat-palette($mat-pink, A400, A100, A700);
+$dark-warn: mat-palette($mat-red);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+$foreground: map-get($dark-theme, foreground);
+
+
+// Our dark theme
+.dark-theme {
+  color: #dddddd;
+  background: #424242;
+
+  html {
+    background-image: url("favicon.ico");
+  }
+
+  li.search-li {
+    background-color: #505050;
+  }
+
+  header {
+    background-color: #505050;
+  }
+
+  div.card {
+    background-color: #505050;
+  }
+
+  span.header {
+    color: #BB86FC;
+  }
+
+  mat-divider.compositions-divider {
+    background-color: #BB86FC;
+  }
+
+  nav.navbar {
+    background-color: #BB86FC;
+  }
+
+  button.read-button {
+    background-color: #BB86FC;
+  }
+
+  mat-panel-title.content-header {
+    color: #BB86FC;
+  }
+
+  div.description-header {
+    color: #BB86FC;
+
+  }
+
+  span.genre-header {
+    color: #BB86FC;
+  }
+
+  div.comments-header {
+    color: #BB86FC;
+  }
+
+  div.author {
+    color: #BB86FC;
+  }
+
+  button.comment-img-profile {
+    background-color: #BB86FC !important;
+  }
+
+  button.for-theme {
+    background-color: #BB86FC;
+  }
+
+  div.example-box {
+    background-color: #424242;
+  }
+
+  button.for-theme-editmode {
+    background-color: #BB86FC;
+  }
+
+  mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #424242;
+  }
+
+  mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #dddddd;
+  }
+
+  @include angular-material-theme($dark-theme);
+}
+

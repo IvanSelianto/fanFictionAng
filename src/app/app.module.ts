@@ -48,6 +48,9 @@ import {MissingTranslationHandler, TranslateLoader, TranslateModule} from '@ngx-
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MissingTranslationService} from './_services/missing-translation.service';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { VkAuthenticationComponent } from './vk-authentication/vk-authentication.component';
+import { GoogleAuthenticationComponent } from './google-authentication/google-authentication.component';
 
 
 @NgModule({
@@ -67,6 +70,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     SanitizeHtmlPipe,
     InplaceeditingComponent,
     CompositionComponent,
+    VkAuthenticationComponent,
+    GoogleAuthenticationComponent,
   ],
 
   imports: [
@@ -107,7 +112,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
       missingTranslationHandler: {provide: MissingTranslationHandler, useClass: MissingTranslationService},
       useDefaultLang: false,
     }),
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTooltipModule
 
   ],
   providers: [authInterceptorProviders, {provide: MatBottomSheetRef, useValue: {}}],

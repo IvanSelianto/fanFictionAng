@@ -44,12 +44,16 @@ export class EditmodeComponent implements OnInit {
       this.text = this.chapter.text;
       this.name = this.chapter.name;
       tinymce.remove();
+
       tinymce.init({
+        skin: false,
+
+        content_css: 'CUSTOM',
         selector: '#textAreaChapterEditMode',
         plugins: [
           'advlist autolink lists link image charmap print preview anchor',
           'searchreplace visualblocks code fullscreen',
-          'insertdatetime media table paste code help wordcount'
+          'insertdatetime media table paste code help wordcount '
         ],
         toolbar:
           'undo redo | formatselect | bold italic backcolor | \
@@ -59,7 +63,6 @@ export class EditmodeComponent implements OnInit {
         tinycomments_mode: 'embedded',
         tinycomments_author: 'Author name',
       });
-
       tinymce.activeEditor.setContent(this.chapter.text);
       if (this.chapter.imgUrl !== null) {
         (document.getElementsByClassName('add-image-icon-edit')[0] as HTMLElement).hidden = true;

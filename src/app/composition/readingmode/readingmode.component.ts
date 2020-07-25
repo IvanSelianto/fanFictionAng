@@ -49,7 +49,7 @@ export class ReadingmodeComponent implements OnInit, DoCheck, AfterViewInit {
 
   delete() {
     this.compositionService.deleteChapter(this.chapter).subscribe(() => {
-      window.location.reload();
+      this.router.navigateByUrl('composition/' + this.compositionService.compositionId);
     });
   }
 

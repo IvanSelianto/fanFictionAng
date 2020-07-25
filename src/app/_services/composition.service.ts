@@ -2,11 +2,10 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-const API_URL = 'https://fanfictionback.herokuapp.com/api/test/';
+const API_URL = 'https://fanfictionback.herokuapp.com/api/fanfic/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-
 
 export class Chapter {
   compositionId: number;
@@ -114,11 +113,13 @@ export class CompositionService {
     return this.http.get(API_URL + 'getcommentsbycompositionid/ ' + compositionId);
   }
 
-  addComment(text, composition) {
-    return this.http.post(API_URL + 'addcomment', {
-      text,
-      composition
-    }, httpOptions);
+  addComment(text: string, compositionDTO: any): Observable<any> {
+    return this.http.post(API_URL + 'addcomment',
+      {
+        text,
+        compositionDTO
+      }
+      , httpOptions);
   }
 
   search(searchRequest: string): any {
@@ -128,6 +129,9 @@ export class CompositionService {
     return this.http.get(API_URL + 'search/' + searchRequest);
   }
 
+  exportToPdf(compositionId: number): Observable<Blob> {
+    return this.http.get(API_URL + 'exporttopdf/' + compositionId, {responseType: 'blob'});
+  }
 }
 
 

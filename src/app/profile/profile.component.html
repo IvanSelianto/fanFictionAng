@@ -30,11 +30,13 @@
         <td mat-cell *matCellDef="let element">
           <mat-icon class="settings-icon" [matMenuTriggerFor]="menu">more_vert</mat-icon>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="addChapter(element.compositionId)">{{"Profile.Add Chapter"| translate}}</button>
+            <button mat-menu-item
+                    (click)="addChapter(element.compositionId)">{{"Profile.Add Chapter"| translate}}</button>
             <button mat-menu-item (click)="readComposition(element)">{{"Profile.Read"| translate}}</button>
 
             <button mat-menu-item (click)="editComposition(element)">{{"Profile.Edit"| translate}}</button>
-            <button mat-menu-item (click)="deleteComposition(element.compositionId)">{{"Profile.Delete"| translate}}</button>
+            <button mat-menu-item
+                    (click)="deleteComposition(element.compositionId)">{{"Profile.Delete"| translate}}</button>
           </mat-menu>
         </td>
 
@@ -51,7 +53,8 @@
       </ng-container>
 
       <ng-container matColumnDef="chaptersAmount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header class="thChaptersAmount">{{"Profile.Chapters Amount"|translate}}</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header
+            class="thChaptersAmount">{{"Profile.Chapters Amount"|translate}}</th>
         <td mat-cell *matCellDef="let element" class="tdChaptersAmount"> {{element.chaptersAmount}}</td>
       </ng-container>
 

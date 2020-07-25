@@ -59,7 +59,7 @@
   overflow: hidden;
 }
 
-.example-box {
+.box {
   padding: 20px 10px;
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
@@ -89,7 +89,7 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.example-box:last-child {
+.box:last-child {
   border: none;
 }
 
@@ -131,7 +131,7 @@
 }
 
 
-.example-viewport {
+.viewport {
   height: 56vh;
   width: 100%;
   overflow-x: hidden;

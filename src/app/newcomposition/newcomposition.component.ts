@@ -7,64 +7,79 @@ import {TokenStorageService} from '../_services/token-storage.service';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-newcomposition',
-    templateUrl: './newcomposition.component.html',
-    styleUrls: ['./newcomposition.component.css'],
+  selector: 'app-newcomposition',
+  templateUrl: './newcomposition.component.html',
+  styleUrls: ['./newcomposition.component.css'],
 })
 export class NewcompositionComponent implements OnInit {
-    isLinear = false;
-    firstFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
-    thirdFormGroup: FormGroup;
-    allGenres: string[];
-    form: any = {};
-    compositionId: any;
-    value = 'New Composition.Create First Chapter!';
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  allGenres = [];
+  form: any = {};
+  value = 'New Composition.Create First Chapter!';
+  allGenresObj = [];
 
-    constructor(private formBuilder: FormBuilder, private  compositionService: CompositionService, public route: ActivatedRoute,
-                private router: Router, private tokenStorageService: TokenStorageService, private translate: TranslateService) {
+  constructor(private formBuilder: FormBuilder, private  compositionService: CompositionService, public route: ActivatedRoute,
+              private router: Router, private tokenStorageService: TokenStorageService, private translate: TranslateService) {
+  }
+
+  ngOnInit() {
+    if (this.tokenStorageService.getUser() === null) {
+      this.router.navigateByUrl('/login');
     }
-
-    ngOnInit() {
-        if (this.tokenStorageService.getUser() === null) {
-            this.router.navigateByUrl('/login');
-        }
-        this.route.params.subscribe(data => {
-                if (data.compositionId !== undefined) {
-                    this.compositionId = data.compositionId;
-                    this.compositionService.getComposition(data.compositionId).subscribe(composition => {
-                            const genres = [];
-                            for (const genre of composition.compositionGenres) {
-                                genres.push(genre.genreName);
-                            }
-                            this.form.title = composition.title;
-                            this.form.description = composition.description;
-                            this.form.compositionId = composition.id;
-                            this.form.compositionGenres = genres;
-                            this.isLinear = true;
-                            this.value = 'New Composition.Save Changes';
-                        }, () => {
-                            this.router.navigateByUrl('home');
-                        }
-                    );
-                }
+    this.route.params.subscribe(data => {
+        if (data.compositionId !== undefined) {
+          this.compositionService.getComposition(data.compositionId).subscribe(composition => {
+              this.form.title = composition.title;
+              this.form.description = composition.description;
+              this.form.compositionId = composition.compositionId;
+              const genreStr = [];
+              for (const genre of composition.compositionGenres) {
+                genreStr.push(genre.genreName);
+              }
+              this.form.compositionGenres = genreStr;
+              this.isLinear = true;
+              this.value = 'New Composition.Save Changes';
+              console.log(this.form);
+            }, () => {
+              this.router.navigateByUrl('home');
             }
-        );
-        this.compositionService.getGenres().subscribe(data => this.allGenres = data);
-        this.firstFormGroup = this.formBuilder.group({firstCtrl: ['', Validators.required]});
-        this.secondFormGroup = this.formBuilder.group({secondCtrl: ['', Validators.required]});
-        this.thirdFormGroup = this.formBuilder.group({thirdCtrl: ['', Validators.required]});
-    }
+          );
+        }
 
-    onSubmit() {
-        this.compositionService.saveComposition(this.form).subscribe(composition => {
-            this.compositionService.compositionId = composition.id;
-            this.form = {};
-            this.compositionService.imgUrl = null;
-            this.router.navigate(['/composition/' + composition.id + '/chapter']);
-        });
 
+      }
+    );
+    this.compositionService.getGenres().subscribe(genres => {
+      this.allGenresObj = genres;
+      for (const genre of genres) {
+        this.allGenres.push(genre.genreName);
+      }
+    });
+
+    this.firstFormGroup = this.formBuilder.group({firstCtrl: ['', Validators.required]});
+    this.secondFormGroup = this.formBuilder.group({secondCtrl: ['', Validators.required]});
+    this.thirdFormGroup = this.formBuilder.group({thirdCtrl: ['', Validators.required]});
+  }
+
+  onSubmit() {
+    const genresObjects = [];
+    for (const genre of this.form.compositionGenres) {
+      genresObjects.push((this.allGenresObj.filter(genreObj => genreObj.genreName === genre)[0]));
     }
+    this.form.compositionGenres = genresObjects;
+
+    this.compositionService.saveComposition(this.form).subscribe(compositionId => {
+      console.log(compositionId);
+      this.compositionService.compositionId = compositionId;
+      this.form = {};
+      this.compositionService.imgUrl = null;
+      this.router.navigate(['/composition/' + compositionId + '/chapter']);
+    });
+
+  }
 
 
 }

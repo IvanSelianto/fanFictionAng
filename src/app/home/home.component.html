@@ -19,9 +19,11 @@
   </span></span>
         <mat-divider></mat-divider>
         <div id=wrap>
-          <div class="rightPublicationDate">{{"Home.Publication Date"| translate}}: {{composition.publicationDate.slice(0, 10)}}
+          <div class="rightPublicationDate">{{"Home.Publication Date"| translate}}
+            : {{composition.publicationDate.slice(0, 10)}}
           </div>
-          <button class="read-button" mat-button (click)="readComposition(composition.id)">{{"Home.Read"|translate}}</button>
+          <button class="read-button" mat-button
+                  (click)="readComposition(composition.id)">{{"Home.Read"|translate}}</button>
         </div>
       </fieldset>
       <mat-divider class="compositions-divider"></mat-divider>
