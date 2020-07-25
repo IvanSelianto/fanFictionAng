@@ -98,5 +98,22 @@
     "Username": "Ник",
     "Email": "Почта",
     "Role": "Роль"
-  }
+  },
+  "Alternative history": "Альтернативная история   ",
+  "Detective": "Детектив",
+  "Drama": "Драма",
+  "History": "История",
+  "Cyberpunk": "Киберпанк",
+  "Comedy": "Комедия",
+  "Melodrama": "Мелодрама",
+  "Miniature": "Миниатюра",
+  "Feature article": "Очерк",
+  "Psychology": "Психология",
+  "Novel": "Роман",
+  "Storybook": "Сборник рассказов",
+  "Tragicomedy": "Трагикомедия",
+  "Tragedy": "Трагедия",
+  "Thriller": "Триллер",
+  "Horror": "Ужасы",
+  "Essay": "Эссе"
 }
