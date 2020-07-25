@@ -27,21 +27,9 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
-              "theme.scss",
-              "node_modules/tinymce/skins/ui/CUSTOM/skin.min.css"
+              "theme.scss"
             ],
-            "scripts": [    "node_modules/tinymce/tinymce.min.js",
-              "node_modules/tinymce/themes/silver/theme.min.js",
-              "node_modules/tinymce/plugins/advlist/plugin.js",
-              "node_modules/tinymce/plugins/code/plugin.js",
-              "node_modules/tinymce/plugins/image/plugin.js",
-              "node_modules/tinymce/plugins/link/plugin.js",
-              "node_modules/tinymce/plugins/lists/plugin.js",
-              "node_modules/tinymce/plugins/searchreplace/plugin.js",
-              "node_modules/tinymce/plugins/wordcount/plugin.js",
-              "node_modules/tinymce/plugins/paste/plugin.js",
-              "node_modules/tinymce/plugins/table/plugin.js",
-              "node_modules/tinymce/plugins/autoresize/plugin.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -105,21 +93,9 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
-              "theme.scss",
-              "node_modules/tinymce/skins/ui/CUSTOM/skin.min.css"
+              "theme.scss"
             ],
-            "scripts": [      "node_modules/tinymce/tinymce.min.js",
-              "node_modules/tinymce/themes/silver/theme.min.js",
-              "node_modules/tinymce/plugins/advlist/plugin.js",
-              "node_modules/tinymce/plugins/code/plugin.js",
-              "node_modules/tinymce/plugins/image/plugin.js",
-              "node_modules/tinymce/plugins/link/plugin.js",
-              "node_modules/tinymce/plugins/lists/plugin.js",
-              "node_modules/tinymce/plugins/searchreplace/plugin.js",
-              "node_modules/tinymce/plugins/wordcount/plugin.js",
-              "node_modules/tinymce/plugins/paste/plugin.js",
-              "node_modules/tinymce/plugins/table/plugin.js",
-              "node_modules/tinymce/plugins/autoresize/plugin.js"]
+            "scripts": []
           }
         },
         "lint": {
