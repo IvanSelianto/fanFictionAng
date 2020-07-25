@@ -7,13 +7,7 @@ const AUTH_API = 'https://fanfictionback.herokuapp.com/api/auth/';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const authVKoptions = {
-  headers: new HttpHeaders({
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-    'Content-Type': 'application/jsonp'
-  })
-};
+
 
 @Injectable({
   providedIn: 'root'
