@@ -6,7 +6,6 @@ import {MatPaginator} from '@angular/material/paginator';
 
 import {TokenStorageService} from '../_services/token-storage.service';
 import {MatTableDataSource} from '@angular/material/table';
-import {UserService} from '../_services/user.service';
 
 
 declare var SockJS;

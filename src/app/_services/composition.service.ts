@@ -3,6 +3,7 @@ import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const API_URL = 'https://fanfictionback.herokuapp.com/api/fanfic/';
+
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -55,6 +56,9 @@ export class CompositionService {
   }
 
   saveChapter(chapter): Observable<any> {
+    if (chapter.name === undefined || !chapter.name.trim()) {
+      return of([]);
+    }
     return this.http.post(API_URL + 'savechapter', {
       compositionId: chapter.compositionId,
       name: chapter.name,

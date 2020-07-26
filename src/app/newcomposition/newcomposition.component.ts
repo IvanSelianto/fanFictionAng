@@ -42,7 +42,6 @@ export class NewcompositionComponent implements OnInit {
               this.form.compositionGenres = genreStr;
               this.isLinear = true;
               this.value = 'New Composition.Save Changes';
-              console.log(this.form);
             }, () => {
               this.router.navigateByUrl('home');
             }

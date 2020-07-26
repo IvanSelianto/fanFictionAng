@@ -18,7 +18,6 @@ export class GoogleAuthenticationComponent implements OnInit {
     this.activatedRoute.queryParams
       .subscribe(params => {
         this.authService.authFromGoogle(params.code).subscribe(data => {
-          console.log(data);
           if (!(data.roles[0] === 'ROLE_UNDEFINED_USER')) {
             this.tokenStorage.saveToken(data.accessToken);
             this.tokenStorage.saveUser(data);

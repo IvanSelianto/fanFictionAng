@@ -37,11 +37,7 @@ export class BoardAdminComponent implements OnInit {
       this.router.navigateByUrl('/home');
     } else {
       this.userService.getAllUsers().subscribe(users => {
-        console.log(users);
         this.users = users;
-        for (const user of this.users) {
-          user.role = this.users[this.users.indexOf(user)].roles[0].name;
-        }
         this.dataSource = new MatTableDataSource(this.users);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
